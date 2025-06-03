@@ -1,8 +1,11 @@
 import React from 'react';
 import ILogo from '../assets/inlingo-removebg.png';
 import { Link, NavLink } from 'react-router';
+import useAuthContext from '../Hooks/useAuthContext';
 
 const Header = () => {
+    const {name} = useAuthContext();
+    console.log(name)
     const links = <>
         <li><NavLink to="/" className="font-semibold text-[16px]">Home</NavLink></li>
         <li><NavLink to="/findTutors" className="font-semibold text-[16px]">Find tutors</NavLink></li>
