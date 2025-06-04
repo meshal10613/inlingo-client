@@ -9,3 +9,4 @@
 - [React Toastify](https://www.npmjs.com/package/react-toastify)
 - [React Tooltip](https://www.npmjs.com/package/react-tooltip)
 - [Axios](https://axios-http.com/)
+- [Motion](https://motion.dev/)

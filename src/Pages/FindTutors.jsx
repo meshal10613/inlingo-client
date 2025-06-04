@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router';
 
 const FindTutors = () => {
-    const tutors = useLoaderData();
+    const loadTutors = useLoaderData();
+    const [tutors, setTutors] = useState(loadTutors);
     const [search, setSearch] = useState("");
-    console.log(search);
+
+    useEffect(() => {
+        const searchData = search.toLowerCase();
+        axios.get(`http://localhost:3000/tutors?language=${searchData}`)
+        .then((result) => {
+            setTutors(result.data)
+        })
+        .catch((error) => {
+            console.log(error)
+        })
+    }, [search]);
+
     return (
         <div>
             <h2 className='text-center text-4xl font-semibold mb-5 text-[#7F3D27] py-5 rounded-md'>Find the right tutor for you.</h2>
             <div className='w-fit mx-auto mb-5 md:mb-10'>
                 <input type="search" defaultValue={search} onChange={(e) => setSearch(e.target.value)} name="search" id="" placeholder='Find tutors by language' className='input min-w-[calc(100vw-40px)] md:min-w-[calc(100vw-400px)] mx-auto'/>
             </div>
-            <div>
+            <div className='flex flex-col gap-5'>
                 {
                     tutors.map((tutor) => 
                     <div key={tutor._id} className='border-2 border-gray-400 p-5 xl:p-7 rounded-xl flex flex-col md:flex-row items-center gap-10'>

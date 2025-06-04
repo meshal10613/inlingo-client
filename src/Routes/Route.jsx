@@ -6,11 +6,14 @@ import Register from "../Pages/Register";
 import AddTutorials from "../Pages/AddTutorials";
 import FindTutors from "../Pages/FindTutors";
 import TutorDetails from "../Pages/TutorDetails";
+import Loading from "../Pages/Loading";
+import ErrorPage from "../Pages/ErrorPage";
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <HomeLayout/>,
+        errorElement: <ErrorPage/>,
         children: [
             {
                 index: true,
@@ -19,13 +22,13 @@ export const router = createBrowserRouter([
             {
                 path: "/findTutors",
                 loader: () => fetch("http://localhost:3000/tutors"),
-                hydrateFallbackElement: <p>Loader</p>,
+                hydrateFallbackElement: <Loading/>,
                 element: <FindTutors/>
             },
             {
                 path: "/tutor/:id",
                 loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`),
-                hydrateFallbackElement: <p>Loader</p>,
+                hydrateFallbackElement: <Loading/>,
                 element: <TutorDetails/>,
             },
             {
