@@ -5,6 +5,9 @@ li a.active{
     color: #7F3D27;
 }
 
+/* :root{
+    --grape: 114, 35, 204;
+} */
 /* 
 * bg- bg-[#DFA16A]
 * text- text-[#7F3D27]

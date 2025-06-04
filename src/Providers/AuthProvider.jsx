@@ -1,12 +1,58 @@
-import React, { createContext } from 'react';
+import { 
+    createUserWithEmailAndPassword, 
+    onAuthStateChanged, 
+    signInWithEmailAndPassword, 
+    signOut, 
+    updateProfile 
+} from 'firebase/auth';
+import React, { createContext, useEffect, useState } from 'react';
+import { auth } from '../Firebase/Firebase.config';
 
-export const AuthContext = createContext();
+export const AuthContext = createContext(null);
 
 const AuthProvider = ({children}) => {
-    const name = "sdf"
-    const authData = {
-        name,
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const RegisterUser = (email, password) => {
+        setLoading(true);
+        return createUserWithEmailAndPassword(auth, email, password)
     };
+
+    const LoginUser = (email, password) => {
+        setLoading(true);
+        return signInWithEmailAndPassword(auth,email, password)
+    };
+
+    const UpdateUser = (updateInfo) => {
+        return updateProfile(auth.currentUser, updateInfo)
+    };
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+            setLoading(false);
+        })
+        return () => {
+            unsubscribe();
+        }
+    }, []);
+
+    const SignOutUser = () => {
+        return signOut(auth)
+    }
+
+    const authData = {
+        user,
+        setUser,
+        loading,
+        setLoading,
+        RegisterUser,
+        LoginUser,
+        UpdateUser,
+        SignOutUser
+    };
+
     return (
         <AuthContext value={authData}>
             {children}

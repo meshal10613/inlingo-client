@@ -1,17 +1,51 @@
 import React from 'react';
 import LoginJson from '../assets/login.json'
 import Lottie from 'lottie-react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FaArrowLeft } from 'react-icons/fa';
+import useAuthContext from '../Hooks/useAuthContext';
+import { Bounce, toast } from 'react-toastify';
 
 const Login = () => {
+    const {LoginUser, setUser} = useAuthContext();
+    const navigate = useNavigate();
 
     const handleLoginBtn = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const allData = Object.fromEntries(formData.entries());
-        console.log(allData)
+        const {email, password} = Object.fromEntries(formData.entries());
+
+        LoginUser(email, password)
+        .then((result) => {
+            const user = result.user;
+            setUser(user);
+            toast.success('Login successfully', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
+            navigate("/");
+        })
+        .catch((error) => {
+            toast.error(`${error.message}`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
+        })
     };
 
     return (

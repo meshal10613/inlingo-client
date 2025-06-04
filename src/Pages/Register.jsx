@@ -3,15 +3,69 @@ import React from 'react';
 import RegisterJson from "../assets/signup.json"
 import { Link } from 'react-router';
 import { FaArrowLeft } from 'react-icons/fa';
+import useAuthContext from '../Hooks/useAuthContext';
+import { Bounce, toast } from 'react-toastify';
 
 const Register = () => {
+    const { setUser, RegisterUser, UpdateUser } = useAuthContext();
 
     const handleRegisterBtn = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const allData = Object.fromEntries(formData.entries());
-        console.log(allData)
+        const {email, password, name, photo} = Object.fromEntries(formData.entries());
+
+        RegisterUser(email, password)
+        .then((result) => {
+            const user = result.user;
+            console.log(user)
+            const updateInfo = {
+                displayName: name, 
+                photoURL: photo,
+            };
+            UpdateUser(updateInfo)
+            .then(
+                setUser({...user, ...updateInfo}),
+                toast.success('Register successfully', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                })
+            )
+            .catch((error) => {
+                setUser(user);
+                toast.error(`${error.message}`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
+            })
+        })
+        .catch((error) => {
+            toast.error(`${error.message}`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        })
     };
 
     return (

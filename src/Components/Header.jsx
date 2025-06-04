@@ -1,11 +1,13 @@
 import React from 'react';
 import ILogo from '../assets/inlingo-removebg.png';
-import { Link, NavLink } from 'react-router';
+import { Link, NavLink, useNavigate } from 'react-router';
 import useAuthContext from '../Hooks/useAuthContext';
+import { Tooltip } from 'react-tooltip';
+import { Bounce, toast } from 'react-toastify';
 
 const Header = () => {
-    const {name} = useAuthContext();
-    console.log(name)
+    const { user, SignOutUser } = useAuthContext();
+    const navigate = useNavigate();
     const links = <>
         <li><NavLink to="/" className="font-semibold text-[16px]">Home</NavLink></li>
         <li><NavLink to="/findTutors" className="font-semibold text-[16px]">Find tutors</NavLink></li>
@@ -13,6 +15,38 @@ const Header = () => {
         <li><NavLink to="/myTutors" className="font-semibold text-[16px]">My Tutors</NavLink></li>
         <li><NavLink to="/myBookedTutors" className="font-semibold text-[16px]">My booked tutors</NavLink></li>
     </>;
+
+    const handleSignOut = () => {
+        SignOutUser()
+        .then(() => {
+            toast.success('Signout successfully', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+            navigate("/");
+        })
+        .catch((error) => {
+            toast.error(`${error.message}`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
+        })
+    };
+
     return (
         <div className="navbar my-2 md:my-5">
             <div className="navbar-start">
@@ -37,7 +71,17 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <Link to="/login" className='btn text-[16px] border-1 border-[#7F3D27] text-[#D9D9D9] bg-[#7F3D27] transition-all hover:text-[#7F3D27] hover:bg-[#D9D9D9]'>Login</Link>
+                {
+                    user ? 
+                    <div className='flex gap-1 items-center'>
+                        <img src={user?.photoURL} data-tooltip-id="my-tooltip" referrerPolicy='no-referrer' alt="" className='w-12 h-12 border border-gray-400 rounded-full cursor-pointer'/>
+                        <Tooltip id="my-tooltip" className='z-10'>
+                            <h3>{user?.displayName}</h3>
+                        </Tooltip>
+                        <button onClick={handleSignOut} className='btn text-[16px] border-1 border-[#7F3D27] text-[#D9D9D9] bg-[#7F3D27] transition-all hover:text-[#7F3D27] hover:bg-[#D9D9D9]'>Logout</button>
+                    </div> :
+                    <Link to="/login" className='btn text-[16px] border-1 border-[#7F3D27] text-[#D9D9D9] bg-[#7F3D27] transition-all hover:text-[#7F3D27] hover:bg-[#D9D9D9]'>Login</Link>
+                }
             </div>
         </div>
     );
