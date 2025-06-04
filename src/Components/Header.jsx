@@ -10,10 +10,10 @@ const Header = () => {
     const navigate = useNavigate();
     const links = <>
         <li><NavLink to="/" className="font-semibold text-[16px]">Home</NavLink></li>
-        <li><NavLink to="/findTutors" className="font-semibold text-[16px]">Find tutors</NavLink></li>
-        <li><NavLink to="/addTutors" className="font-semibold text-[16px]">Add Tutors</NavLink></li>
-        <li><NavLink to="/myTutors" className="font-semibold text-[16px]">My Tutors</NavLink></li>
-        <li><NavLink to="/myBookedTutors" className="font-semibold text-[16px]">My booked tutors</NavLink></li>
+        <li><NavLink to="/findTutors" className="font-semibold text-[16px]">Find Tutors</NavLink></li>
+        <li><NavLink to="/addTutorials" className="font-semibold text-[16px]">Add Tutorials</NavLink></li>
+        <li><NavLink to="/myTutorials" className="font-semibold text-[16px]">My Tutorials</NavLink></li>
+        <li><NavLink to="/myBookedTutors" className="font-semibold text-[16px]">My booked Tutors</NavLink></li>
     </>;
 
     const handleSignOut = () => {

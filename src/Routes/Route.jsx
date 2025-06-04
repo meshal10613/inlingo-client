@@ -3,6 +3,9 @@ import HomeLayout from "../Layouts/HomeLayout";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
+import AddTutorials from "../Pages/AddTutorials";
+import FindTutors from "../Pages/FindTutors";
+import TutorDetails from "../Pages/TutorDetails";
 
 export const router = createBrowserRouter([
     {
@@ -14,13 +17,24 @@ export const router = createBrowserRouter([
                 element: <Home/>
             },
             {
-                path: "/findTutors"
+                path: "/findTutors",
+                loader: () => fetch("http://localhost:3000/tutors"),
+                hydrateFallbackElement: <p>Loader</p>,
+                element: <FindTutors/>
             },
             {
-                path: "/addTutors"
+                path: "/tutor/:id",
+                loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`),
+                hydrateFallbackElement: <p>Loader</p>,
+                element: <TutorDetails/>,
             },
             {
-                path: "/myTutors"
+                path: "/addTutorials",
+                element: <AddTutorials/>
+            },
+            {
+                path: "/myTutorials",
+                
             },
             {
                 path: "/myBookedTutors"
