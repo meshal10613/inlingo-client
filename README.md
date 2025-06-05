@@ -10,3 +10,4 @@
 - [React Tooltip](https://www.npmjs.com/package/react-tooltip)
 - [Axios](https://axios-http.com/)
 - [Motion](https://motion.dev/)
+- [SweetAlert2](https://sweetalert2.github.io/#examples)

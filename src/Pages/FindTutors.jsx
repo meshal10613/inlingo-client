@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router';
+import { Bounce, toast } from 'react-toastify';
 
 const FindTutors = () => {
     const loadTutors = useLoaderData();
@@ -15,7 +16,17 @@ const FindTutors = () => {
             setTutors(result.data)
         })
         .catch((error) => {
-            console.log(error)
+            toast.error(`${error.message}`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
         })
     }, [search]);
 
@@ -25,7 +36,7 @@ const FindTutors = () => {
             <div className='w-fit mx-auto mb-5 md:mb-10'>
                 <input type="search" defaultValue={search} onChange={(e) => setSearch(e.target.value)} name="search" id="" placeholder='Find tutors by language' className='input min-w-[calc(100vw-40px)] md:min-w-[calc(100vw-400px)] mx-auto'/>
             </div>
-            <div className='flex flex-col gap-5'>
+            <div className='flex flex-col gap-5 my-10'>
                 {
                     tutors.map((tutor) => 
                     <div key={tutor._id} className='border-2 border-gray-400 p-5 xl:p-7 rounded-xl flex flex-col md:flex-row items-center gap-10'>
