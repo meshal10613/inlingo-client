@@ -9,6 +9,7 @@ import TutorDetails from "../Pages/TutorDetails";
 import Loading from "../Pages/Loading";
 import ErrorPage from "../Pages/ErrorPage";
 import MyTutorials from "../Pages/MyTutorials";
+import UpdateTutorial from "../Pages/UpdateTutorial";
 
 export const router = createBrowserRouter([
     {
@@ -47,7 +48,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/updateTutorial/:id",
-                
+                loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`),
+                hydrateFallbackElement: <Loading/>,
+                element: <UpdateTutorial/>
             }
         ]
     },
