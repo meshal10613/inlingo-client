@@ -16,6 +16,25 @@ const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    // 
+    const [theme, setTheme] = useState("");
+
+    useEffect(() => {
+        const saved = localStorage.getItem("theme");
+        const systemPref = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "dark";
+        setTheme(saved || systemPref);
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("theme", theme);
+        document.querySelector("html").setAttribute("data-theme", theme);
+    }, [theme]);
+
+    const toggleTheme = () => {
+        setTheme((prv) => (prv === "light" ? "dark" : "light"));
+    }
+    // 
+
     const googleProvider = new GoogleAuthProvider();
 
     const LoginWithGoogle = () => {
@@ -60,7 +79,8 @@ const AuthProvider = ({children}) => {
         LoginUser,
         UpdateUser,
         SignOutUser,
-        LoginWithGoogle
+        LoginWithGoogle,
+        toggleTheme
     };
 
     return (

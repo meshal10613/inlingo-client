@@ -1,7 +1,7 @@
 import React from 'react';
 import LoginJson from '../assets/login.json'
 import Lottie from 'lottie-react';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { FaArrowLeft } from 'react-icons/fa';
 import useAuthContext from '../Hooks/useAuthContext';
 import { Bounce, toast } from 'react-toastify';
@@ -10,6 +10,7 @@ import axios from 'axios';
 const Login = () => {
     const { LoginUser, setUser, LoginWithGoogle } = useAuthContext();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const handleLoginBtn = (e) => {
         e.preventDefault();
@@ -40,7 +41,7 @@ const Login = () => {
                         transition: Bounce,
                     })
                 }
-                navigate("/");
+                navigate( location.state ? location.state : "/");
             })
             .catch((error) => {
                 toast.error(`${error.message}`, {
@@ -95,7 +96,7 @@ const Login = () => {
                         transition: Bounce,
                     })
                 }
-                navigate("/");
+                navigate( location.state ? location.state : "/");
             })
             .catch((error) => {
                 toast.error(`${error.message}`, {

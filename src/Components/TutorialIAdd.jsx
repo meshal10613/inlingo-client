@@ -5,10 +5,15 @@ import { MdDelete } from 'react-icons/md';
 import { Link } from 'react-router';
 import { Bounce, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import TutorialsEmptyState from './TutorialsEmptyState';
 
 const TutorialIAdd = ({MyTutorialsPromise}) => {
     const myTutorialsData = use(MyTutorialsPromise);
     const [myTutorials, setMyTutorials] = useState(myTutorialsData);
+
+    if(myTutorials.length < 1){
+        return <TutorialsEmptyState/>;
+    };
 
     const handleDeleteTutor = (id) =>{
         Swal.fire({

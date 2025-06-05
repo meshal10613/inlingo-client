@@ -11,6 +11,7 @@ import ErrorPage from "../Pages/ErrorPage";
 import MyTutorials from "../Pages/MyTutorials";
 import UpdateTutorial from "../Pages/UpdateTutorial";
 import MyBookedTutors from "../Pages/MyBookedTutors";
+import PrivetRoute from "./PrivetRoute";
 
 export const router = createBrowserRouter([
     {
@@ -34,25 +35,25 @@ export const router = createBrowserRouter([
                 path: "/tutor/:id",
                 loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`),
                 hydrateFallbackElement: <Loading/>,
-                element: <TutorDetails/>,
+                element: <PrivetRoute><TutorDetails/></PrivetRoute>,
             },
             {
                 path: "/addTutorials",
-                element: <AddTutorials/>
+                element: <PrivetRoute><AddTutorials/></PrivetRoute>
             },
             {
                 path: "/myTutorials",
-                element: <MyTutorials/>,
+                element: <PrivetRoute><MyTutorials/></PrivetRoute>,
             },
             {
                 path: "/myBookedTutors",
-                element: <MyBookedTutors/>
+                element: <PrivetRoute><MyBookedTutors/></PrivetRoute>
             },
             {
                 path: "/updateTutorial/:id",
                 loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`),
                 hydrateFallbackElement: <Loading/>,
-                element: <UpdateTutorial/>
+                element: <PrivetRoute><UpdateTutorial/></PrivetRoute>
             }
         ]
     },

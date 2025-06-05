@@ -6,7 +6,7 @@ import { Tooltip } from 'react-tooltip';
 import { Bounce, toast } from 'react-toastify';
 
 const Header = () => {
-    const { user, SignOutUser } = useAuthContext();
+    const { user, SignOutUser, toggleTheme } = useAuthContext();
     const navigate = useNavigate();
     const links = <>
         <li><NavLink to="/" className="font-semibold text-[16px]">Home</NavLink></li>
@@ -71,9 +71,16 @@ const Header = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+                <label className="toggle text-base-content mr-3">
+                    <input type="checkbox" value="synthwave" className="theme-controller" onClick={toggleTheme} />
+
+                    <svg aria-label="sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></g></svg>
+                    
+                    <svg aria-label="moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" fill="none" stroke="currentColor"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></g></svg>
+                </label>
                 {
                     user ? 
-                    <div className='flex gap-1 items-center'>
+                    <div className='flex gap-1 md:gap-2 items-center'>
                         <img src={user?.photoURL} data-tooltip-id="my-tooltip" referrerPolicy='no-referrer' alt="" className='w-12 h-12 border border-gray-400 rounded-full cursor-pointer'/>
                         <Tooltip id="my-tooltip" className='z-10'>
                             <h3>{user?.displayName}</h3>
