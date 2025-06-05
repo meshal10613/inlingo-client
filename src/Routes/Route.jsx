@@ -10,6 +10,7 @@ import Loading from "../Pages/Loading";
 import ErrorPage from "../Pages/ErrorPage";
 import MyTutorials from "../Pages/MyTutorials";
 import UpdateTutorial from "../Pages/UpdateTutorial";
+import MyBookedTutors from "../Pages/MyBookedTutors";
 
 export const router = createBrowserRouter([
     {
@@ -44,7 +45,8 @@ export const router = createBrowserRouter([
                 element: <MyTutorials/>,
             },
             {
-                path: "/myBookedTutors"
+                path: "/myBookedTutors",
+                element: <MyBookedTutors/>
             },
             {
                 path: "/updateTutorial/:id",

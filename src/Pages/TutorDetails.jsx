@@ -2,6 +2,8 @@ import React from 'react';
 import { FaDollarSign, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router';
 import useAuthContext from '../Hooks/useAuthContext';
+import axios from 'axios';
+import { Bounce, toast } from 'react-toastify';
 
 const TutorDetails = () => {
     const {user} = useAuthContext();
@@ -13,10 +15,40 @@ const TutorDetails = () => {
             photoURL: tutor.photoURL,
             language: tutor.language,
             price: tutor.price,
+            tutorName: tutor.tutorName,
             tutorEmail: tutor.tutorEmail,
+            rating: tutor.rating,
             email: user.email,
         };
-        console.log(bookedData)
+        axios.post("http://localhost:3000/booked-tutors", bookedData)
+        .then((result) => {
+            if(result.data.insertedId){
+                toast.success(`Tutor booked successfully`, {
+                    position: "top-right",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: false,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                })
+            }
+        })
+        .catch((error) => {
+            toast.error(`${error.message}`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            })
+        })
     };
 
     return (
