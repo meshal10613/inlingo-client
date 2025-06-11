@@ -15,6 +15,7 @@ export const AuthContext = createContext(null);
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [search, setSearch] = useState("");
 
     // 
     const [theme, setTheme] = useState("");
@@ -75,6 +76,8 @@ const AuthProvider = ({children}) => {
         setUser,
         loading,
         setLoading,
+        search,
+        setSearch,
         RegisterUser,
         LoginUser,
         UpdateUser,

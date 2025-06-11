@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router';
 import { Bounce, toast } from 'react-toastify';
+import useAuthContext from '../Hooks/useAuthContext';
 
 const FindTutors = () => {
+    const {search, setSearch} = useAuthContext();
     const loadTutors = useLoaderData();
     const [tutors, setTutors] = useState(loadTutors);
-    const [search, setSearch] = useState("");
 
     useEffect(() => {
         const searchData = search.toLowerCase();
