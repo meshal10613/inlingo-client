@@ -5,8 +5,11 @@ import { FaArrowRight } from 'react-icons/fa';
 
 const LanguageCategory = () => {
     const allTutors = useLoaderData();
+    console.log(allTutors);
+    // let newTutors = [];
+    // const filterTutors = allTutors.filterTutors((p) => newTutors.includes(p.language))
     return (
-        <div className='grid grid-cols-1 md:grid-cols-3 w-fit mx-auto gap-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto gap-10'>
             {
                 allTutors.map((tutor) => 
                 <div key={tutor._id} className='border-2 border-gray-400 rounded-md p-5 flex gap-5 justify-between items-center cursor-pointer transition-all hover:-translate-y-1'>

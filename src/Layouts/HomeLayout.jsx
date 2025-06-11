@@ -8,7 +8,7 @@ const HomeLayout = () => {
         <div>
             <div className='w-11/12 md:w-10/12 mx-auto'>
                 <Header/>
-                <div className='min-h[calc(100vh-200px)]'>
+                <div className='min-h-[calc(100vh-489px)]'>
                     <Outlet/>
                 </div>
             </div>

@@ -9,6 +9,7 @@
 - [Firebase](https://firebase.google.com/)
 - [React Toastify](https://www.npmjs.com/package/react-toastify)
 - [React Tooltip](https://www.npmjs.com/package/react-tooltip)
+- [React Countup](https://www.npmjs.com/package/react-countup)
 - [Axios](https://axios-http.com/)
 - [Motion](https://motion.dev/)
 - [SweetAlert2](https://sweetalert2.github.io/#examples)

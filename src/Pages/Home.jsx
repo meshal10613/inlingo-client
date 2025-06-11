@@ -1,12 +1,16 @@
 import React from 'react';
 import LanguageCategory from '../Components/LanguageCategory';
 import Banner from '../Components/Banner';
+import Stats from '../Components/Stats';
+import HowItWorks from '../Components/HowItWorks';
 
 const Home = () => {
     return (
-        <div className='w-11/12 md:w-10/12 mx-auto'>
+        <div className=''>
             <Banner/>
+            <Stats/>
             <LanguageCategory/>
+            <HowItWorks/>
         </div>
     );
 };
