@@ -1,14 +1,21 @@
 import axios from 'axios';
-import React, { use } from 'react';
+import React, { use, useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Bounce, toast } from 'react-toastify';
 import BookedEmptyState from '../Components/BookedEmptyState';
 
 const TutorsIBooked = ({MyBookedTutorsPromise}) => {
     const bookedTutors = use(MyBookedTutorsPromise);
+    const [refresh, setRefresh] = useState([]);
+
+    useEffect(() => {
+        setRefresh(bookedTutors);
+    }, [refresh, bookedTutors]);
+    
 
     const handleReview = (tutor) => {
         // document.getElementById(`${tutor._id}`).style.color="yellow";
+
         const updatedData = {
             id: tutor.tutorId,
             tutorRating: parseInt(tutor.rating) + 1,
@@ -42,6 +49,49 @@ const TutorsIBooked = ({MyBookedTutorsPromise}) => {
                 transition: Bounce,
             });
         })
+
+        axios.get(`http://localhost:3000/tutors/${tutor.tutorId}`)
+        .then((result) => {
+            if(result.data){
+                const newUpdatedDoc = {
+                    id: result.data._id,
+                    rating: parseInt(result.data.rating) + 1
+                };
+                axios.patch("http://localhost:3000/tutors", newUpdatedDoc)
+                .then((result) => {
+                    console.log(result.data)
+                    // if(result.data.modifiedCount){
+                    //     setRefresh(bookedTutors);
+                    // }
+                })
+                .catch((error) => {
+                    toast.error(`${error.message}`, {
+                        position: "top-right",
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: false,
+                        pauseOnHover: false,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        transition: Bounce,
+                    });
+                })
+            }
+        })
+        .catch((error) => {
+            toast.error(`${error.message}`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
+        })
     };
 
     if(bookedTutors.length < 1){
@@ -52,7 +102,7 @@ const TutorsIBooked = ({MyBookedTutorsPromise}) => {
         <div>
             <div>
                 {
-                    bookedTutors.map((tutor) => 
+                    refresh.map((tutor) => 
                     <div key={tutor._id} className='border-2 border-gray-400 p-5 xl:p-7 rounded-xl flex items-center justify-between my-5'>
                         <div className='flex items-center gap-4 md:gap-10'>
                             <div>

@@ -54,7 +54,7 @@ const FindTutors = () => {
                             </div>
                             <p className='text-[16px]'>Language: {tutor.language}</p>
                             <p>{tutor.description}</p>
-                            <Link to={`/tutor/${tutor._id}`} className='btn text-[16px] border-1 border-[#7F3D27] text-[#D9D9D9] bg-[#7F3D27] transition-all hover:text-[#7F3D27] hover:bg-[#D9D9D9] w-full'>View Details</Link>
+                            <Link to={`/tutor/${tutor._id}`} className='btn btn-block text-[16px] border-1 border-[#7F3D27] text-[#D9D9D9] bg-[#7F3D27] transition-all hover:text-[#7F3D27] hover:bg-[#D9D9D9]'>View Details</Link>
                         </div>
                     </div>)
                 }
