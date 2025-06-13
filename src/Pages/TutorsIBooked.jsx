@@ -119,9 +119,7 @@ const TutorsIBooked = ({MyBookedTutorsPromise}) => {
                         <div>
                             <button onClick={() => handleReview(tutor)} className='flex items-center gap-2 text-xl border border-gray-400 py-1 px-2 rounded-md cursor-pointer transition-all hover:-translate-y-1 hover:shadow-2xl'>
                                 {tutor.rating} 
-                                <FaStar id={tutor._id} size={20} 
-                                // className='text-yellow-400'
-                                />
+                                <FaStar id={tutor._id} size={20} />
                             </button>
                         </div>
                     </div>

@@ -4,7 +4,7 @@ import EmptyImg from '../assets/alert-error.png'
 
 const BookedEmptyState = () => {
     return (
-        <div id="lesson-default" class="text-center bg-[#D9D9D9] py-16 rounded-2xl space-y-2 md:space-y-3 my-10">
+        <div id="lesson-default" className="text-center bg-[#D9D9D9] py-16 rounded-2xl space-y-2 md:space-y-3 my-10">
             <img className="inline-flex justify-center items-center w-fit" src={EmptyImg} alt=""/>
             <p className="opacity-80">You haven't booked any tutors yet</p>
             <h1 className="text-3xl font-medium">Please Book a Tutor</h1>

@@ -11,7 +11,6 @@ const LanguageCategory = () => {
     const {setSearch} = useAuthContext();
     const allTutors = useLoaderData();
     const navigate = useNavigate();
-    // console.log(allTutors);
 
     const uniqueTutors = [];
     const seenLanguages = new Set();
@@ -21,7 +20,6 @@ const LanguageCategory = () => {
             uniqueTutors.push(tutor);
         }
     }
-    // console.log(uniqueTutors)
 
     const handleLanguageCategory = (tutor) => {
         navigate("/findTutors");

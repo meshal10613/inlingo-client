@@ -44,7 +44,7 @@ const FindTutors = () => {
                         <div>
                             <img src={tutor.photoURL} alt="tutor-img" className='w-40 rounded-md'/>
                         </div>
-                        <div className='space-y-3'>
+                        <div className='space-y-3 flex-1'>
                             <div className='flex gap-4 items-center'>
                                 <h2 className='text-2xl font-semibold'>{tutor.tutorName}</h2>
                                 <p className='flex items-center gap-1 text-xl'>
