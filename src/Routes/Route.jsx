@@ -33,7 +33,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/tutor/:id",
-                loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`),
+                loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`, {
+                    credentials: 'include'
+                }),
                 hydrateFallbackElement: <Loading/>,
                 element: <PrivetRoute><TutorDetails/></PrivetRoute>,
             },
@@ -51,7 +53,9 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/updateTutorial/:id",
-                loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`),
+                loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`, {
+                    credentials: 'include'
+                }),
                 hydrateFallbackElement: <Loading/>,
                 element: <PrivetRoute><UpdateTutorial/></PrivetRoute>
             }

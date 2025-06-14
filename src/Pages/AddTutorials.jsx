@@ -12,7 +12,9 @@ const AddTutorials = () => {
         const formData = new FormData(form);
         const tutorData = Object.fromEntries(formData.entries());
 
-        axios.post("http://localhost:3000/tutors", tutorData)
+        axios.post("http://localhost:3000/tutors", tutorData, {
+            withCredentials: true
+        })
         .then((result) => {
             if(result.data.insertedId){
                 toast.success('Tutor added successfully', {

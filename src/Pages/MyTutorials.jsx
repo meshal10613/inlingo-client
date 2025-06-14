@@ -6,7 +6,9 @@ import Loading from './Loading';
 
 const MyTutorials = () => {
     const {user} = useAuthContext();
-    const MyTutorialsPromise = fetch(`http://localhost:3000/tutors?email=${user?.email}`).then(res => res.json())
+    const MyTutorialsPromise = fetch(`http://localhost:3000/tutors?email=${user?.email}`, {
+        credentials: 'include'
+    }).then(res => res.json())
     return (
         <div>
             <Suspense fallback={<Loading/>}>

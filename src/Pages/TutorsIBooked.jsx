@@ -1,16 +1,21 @@
 import axios from 'axios';
-import React, { use, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Bounce, toast } from 'react-toastify';
 import BookedEmptyState from '../Components/BookedEmptyState';
+import useAuthContext from '../Hooks/useAuthContext';
 
-const TutorsIBooked = ({MyBookedTutorsPromise}) => {
-    const bookedTutors = use(MyBookedTutorsPromise);
+const TutorsIBooked = () => {
+    const {user} = useAuthContext();
     const [refresh, setRefresh] = useState([]);
 
     useEffect(() => {
-        setRefresh(bookedTutors);
-    }, [refresh, bookedTutors]);
+        fetch(`http://localhost:3000/booked-tutors?email=${user?.email}`,  {
+            credentials: 'include'
+        })
+        .then(res => res.json())
+        .then(data => setRefresh(data));
+    }, [refresh]);
     
 
     const handleReview = (tutor) => {
@@ -50,7 +55,9 @@ const TutorsIBooked = ({MyBookedTutorsPromise}) => {
             });
         })
 
-        axios.get(`http://localhost:3000/tutors/${tutor.tutorId}`)
+        axios.get(`http://localhost:3000/tutors/${tutor.tutorId}`, {
+            withCredentials: true
+        })
         .then((result) => {
             if(result.data){
                 const newUpdatedDoc = {
@@ -94,7 +101,7 @@ const TutorsIBooked = ({MyBookedTutorsPromise}) => {
         })
     };
 
-    if(bookedTutors.length < 1){
+    if(refresh.length < 1){
         return <BookedEmptyState/>;
     };
 
