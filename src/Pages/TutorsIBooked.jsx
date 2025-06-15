@@ -10,7 +10,7 @@ const TutorsIBooked = () => {
     const [refresh, setRefresh] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:3000/booked-tutors?email=${user?.email}`,  {
+        fetch(`https://assignment-11-server-omega-vert.vercel.app/booked-tutors?email=${user?.email}`,  {
             credentials: 'include'
         })
         .then(res => res.json())
@@ -25,7 +25,7 @@ const TutorsIBooked = () => {
             id: tutor.tutorId,
             tutorRating: parseInt(tutor.rating) + 1,
         };
-        axios.patch("http://localhost:3000/booked-tutors", updatedData)
+        axios.patch("https://assignment-11-server-omega-vert.vercel.app/booked-tutors", updatedData)
         .then((result) => {
             if(result.data.modifiedCount){
                 toast.success(`Review ${tutor.tutorName} successfully`, {
@@ -55,7 +55,7 @@ const TutorsIBooked = () => {
             });
         })
 
-        axios.get(`http://localhost:3000/tutors/${tutor.tutorId}`, {
+        axios.get(`https://assignment-11-server-omega-vert.vercel.app/tutors/${tutor.tutorId}`, {
             withCredentials: true
         })
         .then((result) => {
@@ -64,7 +64,7 @@ const TutorsIBooked = () => {
                     id: result.data._id,
                     rating: parseInt(result.data.rating) + 1
                 };
-                axios.patch("http://localhost:3000/tutors", newUpdatedDoc)
+                axios.patch("https://assignment-11-server-omega-vert.vercel.app/tutors", newUpdatedDoc)
                 .then((result) => {
                     console.log(result.data)
                     // if(result.data.modifiedCount){

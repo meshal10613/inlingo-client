@@ -7,7 +7,7 @@ export const Stats = () => {
     //user
     const [users, setUsers] = useState(null);
     useEffect(() => {
-        axios.get("http://localhost:3000/users?user=user")
+        axios.get("https://assignment-11-server-omega-vert.vercel.app/users?user=user")
         .then((result) => {
             setUsers(result.data)
         })
@@ -28,7 +28,7 @@ export const Stats = () => {
     //tutor
     const [tutor, setTutor] = useState(null);
     useEffect(() => {
-        axios.get("http://localhost:3000/tutors?tutor=tutor")
+        axios.get("https://assignment-11-server-omega-vert.vercel.app/tutors?tutor=tutor")
         .then((result) => {
             setTutor(result.data)
         })
@@ -50,7 +50,7 @@ export const Stats = () => {
     //tutor review
     const [review, setReview] = useState(null);
     useEffect(() => {
-        axios.get("http://localhost:3000/tutors?countRev=countRev")
+        axios.get("https://assignment-11-server-omega-vert.vercel.app/tutors?countRev=countRev")
         .then((result) => {
             setReview(result.data);
         })
@@ -72,7 +72,7 @@ export const Stats = () => {
     //total language
     const [language, setLanguage] = useState(null);
     useEffect(() => {
-        axios.get("http://localhost:3000/tutors?countLang=countLang")
+        axios.get("https://assignment-11-server-omega-vert.vercel.app/tutors?countLang=countLang")
         .then((result) => {
             setLanguage(result.data);
         })

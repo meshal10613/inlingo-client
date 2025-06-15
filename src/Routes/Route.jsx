@@ -21,19 +21,19 @@ export const router = createBrowserRouter([
         children: [
             {
                 index: true,
-                loader: () => fetch("http://localhost:3000/tutors"),
+                loader: () => fetch("https://assignment-11-server-omega-vert.vercel.app/tutors"),
                 hydrateFallbackElement: <Loading/>,
                 element: <Home/>
             },
             {
                 path: "/findTutors",
-                loader: () => fetch("http://localhost:3000/tutors"),
+                loader: () => fetch("https://assignment-11-server-omega-vert.vercel.app/tutors"),
                 hydrateFallbackElement: <Loading/>,
                 element: <FindTutors/>
             },
             {
                 path: "/tutor/:id",
-                loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`, {
+                loader: ({params}) => fetch(`https://assignment-11-server-omega-vert.vercel.app/tutors/${params.id}`, {
                     credentials: 'include'
                 }),
                 hydrateFallbackElement: <Loading/>,
@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/updateTutorial/:id",
-                loader: ({params}) => fetch(`http://localhost:3000/tutors/${params.id}`, {
+                loader: ({params}) => fetch(`https://assignment-11-server-omega-vert.vercel.app/tutors/${params.id}`, {
                     credentials: 'include'
                 }),
                 hydrateFallbackElement: <Loading/>,

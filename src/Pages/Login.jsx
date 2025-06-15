@@ -26,7 +26,7 @@ const Login = () => {
                 email: email,
                 lastSignInTime: user?.metadata?.lastSignInTime
             };
-            axios.patch("http://localhost:3000/users", serverData)
+            axios.patch("https://assignment-11-server-omega-vert.vercel.app/users", serverData)
             .then((result) => {
                 if(result.data.modifiedCount){
                     toast.success('Login successfully', {
@@ -81,7 +81,7 @@ const Login = () => {
                 email: user.email,
                 lastSignInTime: user?.metadata?.lastSignInTime
             };
-            axios.patch("http://localhost:3000/users", serverData)
+            axios.patch("https://assignment-11-server-omega-vert.vercel.app/users", serverData)
             .then((result) => {
                 if(result.data.modifiedCount){
                     toast.success('Login successfully', {

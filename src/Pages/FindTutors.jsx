@@ -12,7 +12,7 @@ const FindTutors = () => {
 
     useEffect(() => {
         const searchData = search.toLowerCase();
-        axios.get(`http://localhost:3000/tutors?language=${searchData}`)
+        axios.get(`https://assignment-11-server-omega-vert.vercel.app/tutors?language=${searchData}`)
         .then((result) => {
             setTutors(result.data)
         })

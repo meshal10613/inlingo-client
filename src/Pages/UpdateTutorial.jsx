@@ -16,7 +16,7 @@ const UpdateTutorial = () => {
         const formData = new FormData(form);
         const tutorData = Object.fromEntries(formData.entries());
 
-        axios.put(`http://localhost:3000/tutors/${tutorDetails._id}`, tutorData)
+        axios.put(`https://assignment-11-server-omega-vert.vercel.app/tutors/${tutorDetails._id}`, tutorData)
         .then((result) => {
             if(result.data.modifiedCount){
                 toast.success('Tutor update successfully', {

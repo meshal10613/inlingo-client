@@ -12,7 +12,7 @@ const AddTutorials = () => {
         const formData = new FormData(form);
         const tutorData = Object.fromEntries(formData.entries());
 
-        axios.post("http://localhost:3000/tutors", tutorData, {
+        axios.post("https://assignment-11-server-omega-vert.vercel.app/tutors", tutorData, {
             withCredentials: true
         })
         .then((result) => {

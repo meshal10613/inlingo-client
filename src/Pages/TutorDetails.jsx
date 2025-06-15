@@ -20,7 +20,7 @@ const TutorDetails = () => {
             rating: tutor.rating,
             email: user.email,
         };
-        axios.post("http://localhost:3000/booked-tutors", bookedData)
+        axios.post("https://assignment-11-server-omega-vert.vercel.app/booked-tutors", bookedData)
         .then((result) => {
             if(result.data.insertedId){
                 toast.success(`Tutor booked successfully`, {

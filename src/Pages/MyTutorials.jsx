@@ -6,7 +6,7 @@ import Loading from './Loading';
 
 const MyTutorials = () => {
     const {user} = useAuthContext();
-    const MyTutorialsPromise = fetch(`http://localhost:3000/tutors?email=${user?.email}`, {
+    const MyTutorialsPromise = fetch(`https://assignment-11-server-omega-vert.vercel.app/tutors?email=${user?.email}`, {
         credentials: 'include'
     }).then(res => res.json())
     return (

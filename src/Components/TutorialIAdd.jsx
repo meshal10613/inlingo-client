@@ -26,7 +26,7 @@ const TutorialIAdd = ({MyTutorialsPromise}) => {
             confirmButtonText: "Yes, delete it!"
             }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`http://localhost:3000/tutors/${id}`)
+                axios.delete(`https://assignment-11-server-omega-vert.vercel.app/tutors/${id}`)
                 .then((result) => {
                     if(result.data.deletedCount){
                         Swal.fire({

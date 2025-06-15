@@ -32,7 +32,7 @@ const Register = () => {
                 creationTime: user?.metadata?.creationTime,
                 lastSignInTime: user?.metadata?.lastSignInTime,
             };
-            axios.post("http://localhost:3000/users", serverData)
+            axios.post("https://assignment-11-server-omega-vert.vercel.app/users", serverData)
             .then((result) => {
                 if(result.data.insertedId){
                 UpdateUser(updateInfo)
@@ -107,7 +107,7 @@ const Register = () => {
                 creationTime: user?.metadata?.creationTime,
                 lastSignInTime: user?.metadata?.lastSignInTime,
             };
-            axios.post("http://localhost:3000/users", serverData)
+            axios.post("https://assignment-11-server-omega-vert.vercel.app/users", serverData)
             .then((result) => {
                 if(result.data.insertedId){
                     setUser(user),
