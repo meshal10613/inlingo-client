@@ -52,7 +52,7 @@ const Header = () => {
             <div className="navbar-start">
                 <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-5 md:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                 </div>
                     <ul
                         tabIndex={0}
@@ -60,8 +60,8 @@ const Header = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="text-4xl font-semibold flex items-center">
-                    <img src={ILogo} alt="" className='w-16'/>
+                <a className="text-xl md:text-4xl font-semibold flex items-center">
+                    <img src={ILogo} alt="" className='w-10 md:w-16'/>
                     <span className='animate-pulse'>Inlingo</span>
                 </a>
             </div>
@@ -81,7 +81,7 @@ const Header = () => {
                 {
                     user ? 
                     <div className='flex gap-1 md:gap-2 items-center'>
-                        <img src={user?.photoURL} data-tooltip-id="my-tooltip" referrerPolicy='no-referrer' alt="" className='w-12 h-12 border border-gray-400 rounded-full cursor-pointer'/>
+                        <img src={user?.photoURL} data-tooltip-id="my-tooltip" referrerPolicy='no-referrer' alt="" className='w-8 h-8 md:w-12 md:h-12 border border-gray-400 rounded-full cursor-pointer'/>
                         <Tooltip id="my-tooltip" className='z-10'>
                             <h3>{user?.displayName}</h3>
                         </Tooltip>

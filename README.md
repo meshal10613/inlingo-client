@@ -33,17 +33,6 @@ By combining modern web technologies with a passion for education, Inlingo empow
 **Frontend:**
 - [React Router](https://reactrouter.com/home)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Daisy UI](https://daisyui.com/)
-<!-- - [Chakra UI](https://chakra-ui.com/) -->
-- [Lottie React](https://www.npmjs.com/package/lottie-react)
-- [React Icons](https://react-icons.github.io/react-icons/)
-- [Firebase](https://firebase.google.com/)
-- [React Toastify](https://www.npmjs.com/package/react-toastify)
-- [React Tooltip](https://www.npmjs.com/package/react-tooltip)
-- [React Countup](https://www.npmjs.com/package/react-countup)
-- [Axios](https://axios-http.com/)
-- [Motion](https://motion.dev/)
-- [SweetAlert2](https://sweetalert2.github.io/#examples)
 
 **Backend:**
 - [Express JS](https://expressjs.com/)
@@ -59,6 +48,18 @@ By combining modern web technologies with a passion for education, Inlingo empow
 
 - [Firebase](https://firebase.google.com/)
 - [Vercel](https://vercel.com/)
+
+**NPM packages**
+
+- [Axios](https://axios-http.com/)
+- [Daisy UI](https://daisyui.com/)
+- [Lottie React](https://www.npmjs.com/package/lottie-react)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [React Toastify](https://www.npmjs.com/package/react-toastify)
+- [React Tooltip](https://www.npmjs.com/package/react-tooltip)
+- [React Countup](https://www.npmjs.com/package/react-countup)
+- [Motion](https://motion.dev/)
+- [SweetAlert2](https://sweetalert2.github.io/#examples)
 
 
 ### 💬 Contact

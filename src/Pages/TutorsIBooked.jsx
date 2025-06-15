@@ -67,9 +67,6 @@ const TutorsIBooked = () => {
                 axios.patch("https://assignment-11-server-omega-vert.vercel.app/tutors", newUpdatedDoc)
                 .then((result) => {
                     console.log(result.data)
-                    // if(result.data.modifiedCount){
-                    //     setRefresh(bookedTutors);
-                    // }
                 })
                 .catch((error) => {
                     toast.error(`${error.message}`, {
@@ -120,7 +117,7 @@ const TutorsIBooked = () => {
                                     <h2 className='text-2xl font-semibold'>{tutor.tutorName}</h2>
                                 </div>
                                 <p className='text-[16px]'>Language: {tutor.language}</p>
-                                <p className='text-[16px]'>Language: {tutor.price}</p>
+                                <p className='text-[16px]'>Price: {tutor.price}</p>
                             </div>
                         </div>
                         <div>
