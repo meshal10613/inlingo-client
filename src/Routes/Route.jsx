@@ -12,6 +12,9 @@ import MyTutorials from "../Pages/MyTutorials";
 import UpdateTutorial from "../Pages/UpdateTutorial";
 import MyBookedTutors from "../Pages/MyBookedTutors";
 import PrivetRoute from "./PrivetRoute";
+import AboutUs from "../Pages/Static/AboutUs";
+import Blogs from "../Pages/Static/Blogs";
+import Subscription from "./Subscription";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +61,18 @@ export const router = createBrowserRouter([
                 }),
                 hydrateFallbackElement: <Loading/>,
                 element: <PrivetRoute><UpdateTutorial/></PrivetRoute>
+            },
+            {
+                path: "/aboutUs",
+                element: <AboutUs/>
+            },
+            {
+                path: "/blogs",
+                element: <Blogs/>
+            },
+            {
+                path: "/subscription",
+                element: <Subscription/>
             }
         ]
     },

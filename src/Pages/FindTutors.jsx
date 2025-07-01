@@ -9,7 +9,7 @@ const FindTutors = () => {
     const {search, setSearch} = useAuthContext();
     const loadTutors = useLoaderData();
     const [tutors, setTutors] = useState(loadTutors);
-    const [sortBy, setSortBy] = useState('a-z');
+    const [sortBy, setSortBy] = useState('');
 
     useEffect(() => {
         const searchData = search.toLowerCase();
@@ -37,7 +37,7 @@ const FindTutors = () => {
             <h2 className='text-center text-4xl font-semibold mb-5 text-[#7F3D27] py-5 rounded-md'>Find the right tutor for you.</h2>
             <div className='flex justify-between items-center mb-5 md:mb-10'>
                 <input type="search" defaultValue={search} onChange={(e) => setSearch(e.target.value)} name="search" id="" placeholder='Find tutors by language' className='input w-fit'/>
-                <div className="mb-4">
+                <div className="">
                     <label className="mr-2 font-medium">Sort by:</label>
                     <select
                     className="border px-2 py-1 rounded"
@@ -47,8 +47,9 @@ const FindTutors = () => {
                         {/* <option value="tutorName">Tutor Name</option>
                         <option value="price">Price</option>
                         <option value="rating">Rating</option> */}
-                        <option value="a-z">A-Z</option>
-                        <option value="z-a">Z-A</option>
+                        <option value="">Default</option>
+                        <option value="az">A-Z</option>
+                        <option value="za">Z-A</option>
                     </select>
                 </div>
             </div>
