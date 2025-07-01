@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router';
 
 const Footer = () => {
     return (
-    <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:px-8">
+    <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:px-8 bg-secondary">
         <div className="flex flex-col md:flex-row items-baseline justify-between pb-10 space-y-10">
         <div className="">
             <a

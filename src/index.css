@@ -4,6 +4,25 @@
     themes: light --default, dark --prefersdark;
 }
 
+@plugin "daisyui/theme" {
+    name: "light";
+    default: false;
+    prefersdark: false;
+    color-scheme: "light";
+    --color-primary: #7F3D27;
+    --color-secondary: #D9D9D9;
+
+}
+
+@plugin "daisyui/theme" {
+    name: "dark";
+    default: false;
+    prefersdark: false;
+    color-scheme: "dark";
+    --color-primary: #7F3D27;
+    --color-secondary: #D9D9D9;
+}
+
 li a.active{
     color: #7F3D27;
     border-bottom: 2px solid #7F3D27;

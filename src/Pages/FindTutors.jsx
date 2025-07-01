@@ -9,10 +9,11 @@ const FindTutors = () => {
     const {search, setSearch} = useAuthContext();
     const loadTutors = useLoaderData();
     const [tutors, setTutors] = useState(loadTutors);
+    const [sortBy, setSortBy] = useState('a-z');
 
     useEffect(() => {
         const searchData = search.toLowerCase();
-        axios.get(`https://assignment-11-server-omega-vert.vercel.app/tutors?language=${searchData}`)
+        axios.get(`https://assignment-11-server-omega-vert.vercel.app/tutors?language=${searchData}&sortBy=${sortBy}`)
         .then((result) => {
             setTutors(result.data)
         })
@@ -29,22 +30,36 @@ const FindTutors = () => {
                 transition: Bounce,
             })
         })
-    }, [search]);
+    }, [search, sortBy]);
 
     return (
         <div>
             <h2 className='text-center text-4xl font-semibold mb-5 text-[#7F3D27] py-5 rounded-md'>Find the right tutor for you.</h2>
-            <div className='w-fit mx-auto mb-5 md:mb-10'>
-                <input type="search" defaultValue={search} onChange={(e) => setSearch(e.target.value)} name="search" id="" placeholder='Find tutors by language' className='input min-w-[calc(100vw-40px)] md:min-w-[calc(100vw-400px)] mx-auto'/>
+            <div className='flex justify-between items-center mb-5 md:mb-10'>
+                <input type="search" defaultValue={search} onChange={(e) => setSearch(e.target.value)} name="search" id="" placeholder='Find tutors by language' className='input w-fit'/>
+                <div className="mb-4">
+                    <label className="mr-2 font-medium">Sort by:</label>
+                    <select
+                    className="border px-2 py-1 rounded"
+                    onChange={(e) => setSortBy(e.target.value)}
+                    value={sortBy}
+                    >
+                        {/* <option value="tutorName">Tutor Name</option>
+                        <option value="price">Price</option>
+                        <option value="rating">Rating</option> */}
+                        <option value="a-z">A-Z</option>
+                        <option value="z-a">Z-A</option>
+                    </select>
+                </div>
             </div>
-            <div className='flex flex-col gap-5 my-10'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 w-fit mx-auto my-10'>
                 {
                     tutors.map((tutor) => 
-                    <div key={tutor._id} className='border-2 border-gray-400 p-5 xl:p-7 rounded-xl flex flex-col md:flex-row items-center gap-10'>
-                        <div>
+                    <div key={tutor._id} className='border-2 border-gray-400 p-5 xl:p-7 rounded-xl flex flex-col items-center gap-10'>
+                        <div className='aspect-square'>
                             <img src={tutor.photoURL} alt="tutor-img" className='w-40 rounded-md'/>
                         </div>
-                        <div className='space-y-3 flex-1'>
+                        <div className='space-y-1 flex-1'>
                             <div className='flex gap-4 items-center'>
                                 <h2 className='text-2xl font-semibold'>{tutor.tutorName}</h2>
                                 <p className='flex items-center gap-1 text-xl'>
@@ -53,7 +68,7 @@ const FindTutors = () => {
                                 </p>
                             </div>
                             <p className='text-[16px]'>Language: {tutor.language}</p>
-                            <p>{tutor.description}</p>
+                            <p>{(tutor.description).slice(0, 48)}</p>
                             <Link to={`/tutor/${tutor._id}`} className='btn btn-block text-[16px] border-1 border-[#7F3D27] text-[#D9D9D9] bg-[#7F3D27] transition-all hover:text-[#7F3D27] hover:bg-[#D9D9D9]'>View Details</Link>
                         </div>
                     </div>)
