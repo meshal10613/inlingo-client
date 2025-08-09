@@ -3,7 +3,7 @@ import React from 'react';
 const HowItWorks = () => {
     return (
         <div className='my-10 md:my-20'>
-            <h2 className='font-semibold text-5xl'>How Inlingo Works</h2>
+            <h2 className='text-center font-bold text-4xl mb-10'>How Inlingo Works</h2>
             <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 mt-5'>
                 <div className='border-2 border-gray-400 rounded-md p-4 space-y-2'>
                     <h3 className='bg-teal-400 text-3xl px-4 py-5 rounded-md badge'>1</h3>
