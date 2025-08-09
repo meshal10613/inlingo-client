@@ -2,8 +2,24 @@ import React from 'react';
 import ILogo from '../assets/inlingo-removebg.png';
 import { FaFacebook, FaGithub, FaLinkedin } from 'react-icons/fa';
 import { Link, NavLink } from 'react-router';
+import { Bounce, toast } from 'react-toastify';
 
 const Footer = () => {
+    const handleForm = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        toast.success(`Thank you! ${email}`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        })
+    };
     return (
     <div className="px-4 pt-16 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:px-8 bg-secondary">
         <div className="flex flex-col md:flex-row items-baseline justify-between pb-10 space-y-10">
@@ -67,11 +83,12 @@ const Footer = () => {
             <span className="text-base font-bold tracking-wide text-gray-900">
                 Subscribe for updates
             </span>
-            <form className="flex flex-col mt-4 md:flex-row">
+            <form onSubmit={handleForm} className="flex flex-col mt-4 md:flex-row">
                 <input
                 placeholder="Email"
                 required
-                type="text"
+                type="email"
+                name="email"
                 className="flex-grow w-full h-12 px-4 mb-3 transition duration-200 bg-white border border-gray-300 rounded shadow-sm appearance-none md:mr-2 md:mb-0 focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline"
                 />
                 <button
