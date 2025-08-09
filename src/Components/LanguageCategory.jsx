@@ -47,7 +47,7 @@ const LanguageCategory = () => {
                     )
                 }
             </div>
-            <div className='my-4'>
+            <div className='my-4 text-center'>
                 {
                     showAll ?
                     <button onClick={() => setShowAll(!showAll)} className='btn text-[16px] border-1 border-[#7F3D27] text-[#D9D9D9] bg-[#7F3D27] transition-all hover:text-[#7F3D27] hover:bg-[#D9D9D9]'>Hide All</button> :
