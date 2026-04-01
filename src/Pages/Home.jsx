@@ -9,7 +9,7 @@ const Home = () => {
     return (
         <div className=''>
             <Banner/>
-            <Stats/>
+            {/* <Stats/> */}
             <LanguageCategory/>
             <FAQ/>
             <HowItWorks/>
